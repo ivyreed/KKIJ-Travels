@@ -12,3 +12,19 @@ function placesTravel(){
     .then(function(resp) { return resp.json()})
     .then(function(data) {console.log(data)})
 }
+
+function loadMaps() {
+    var apiKey = 'AljsI1cce55ZdqJLOmRmaNeZTfNQdL6DbjCMScetIUaHu4ydHWKlyRvGF0PmqAq4';
+    fetch('https://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=47.610,-122.107&wayPoint.2=45.610,-122.107&key=' + apiKey)
+    
+
+    .then(function(resp) { return resp.json() }) // Convert data to json
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function() {
+      // catch any errors
+    });
+  }
+
+  loadMaps ();
