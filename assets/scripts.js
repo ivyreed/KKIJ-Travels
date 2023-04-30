@@ -16,14 +16,16 @@ event.pleaseNote
 event.priceRanges --It's an array 
 */
 var displayEvents = [];
+var allEvents = [];
 
 var cityEvents = function (events) {
-    // var city = localStorage.getItem("city");
-    // if (city) {
-        // displayEvents = JSON.parse(city);
-        // console.log(displayHistory)
+    var city = localStorage.getItem("city");
+    if (city) {
+        displayEvents = JSON.parse(city);
+        console.log(displayEvents)
         for (let i = 0; i < events.length; i++) {
             var currentEvent = events[i];
+            allEvents.push(currentEvent);
             displayVenues.classList.add("event");
             var card = document.createElement("div");
             card.classList.add("card", "w-96", "bg-base-100", "shadow-xl");
@@ -63,8 +65,21 @@ var cityEvents = function (events) {
 
             // // })
         }
-    // }
+        searchForm.addEventListener("submit", searchHandler);
+        
+    }
+    localStorage.setItem("city", JSON.stringify(allEvents));
 }
+
+var displayStoredEvents = function() {
+    var storedEvents = localStorage.getItem("city");
+    if (storedEvents) {
+        displayEvents = JSON.parse(storedEvents);
+        cityEvents(displayEvents);
+        venueLocation.innerHTML = "";
+}
+}
+displayStoredEvents();
 
 function searchHandler(event) {
     event.preventDefault();
@@ -81,6 +96,7 @@ function placesTravel(city){
     .then(function(resp) { return resp.json()})
     .then(function(data) {
         var events = data._embedded.events;
+        venueLocation.innerHTML = "";
         cityEvents(events);
         console.log(events)})
 }
