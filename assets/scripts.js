@@ -110,6 +110,8 @@ function placesTravel(city){
   var miami = document.querySelector('#miami')
   var losAngeles = document.querySelector('#los-angeles')
 
+
+
   // add event listeners for city buttons
   function lasVegasEvents(event) {
     event.preventDefault();
@@ -159,21 +161,87 @@ function placesTravel(city){
   // loadMaps ();
 
 
+  // add event listeners for city buttons
+  function lasVegasEvents(event) {
+    event.preventDefault();
+    var city = "las vegas"
+    console.log(city)
+    placesTravel(city);
+}
+  lasVegas.addEventListener('click', lasVegasEvents)
+
+  function newYorkEvents(event) {
+    event.preventDefault();
+    var city = "new york"
+    console.log(city)
+    placesTravel(city);
+}
+  newYork.addEventListener('click', newYorkEvents)
+
+  function miamiEvents(event) {
+    event.preventDefault();
+    var city = "miami"
+    console.log(city)
+    placesTravel(city);
+}
+  miami.addEventListener('click', miamiEvents)
+
+  function losAngelesEvents(event) {
+    event.preventDefault();
+    var city = "los angeles"
+    console.log(city)
+    placesTravel(city);
+}
+  losAngeles.addEventListener('click', losAngelesEvents)
 
 
+
+
+   
+    // .then(function(resp) { return resp.json() }) // Convert data to json
+    // .then(function(data) {
+    //   console.log(data);
+    // })
+    // .catch(function() {
+    //   // catch any errors
+    // });
   
-searchInput.addEventListener("input", getCity);
+
+  // loadMaps ();
+  searchInput.addEventListener("input", getCity);
 
 function onInputChange(){
     let cur = searchInput.value
     console.log(cur)
 }
 
-
+// This loops through an obtains each city with the same name and appends it as text to the HTML document. 
 function loop(result) {
+    // if (locationList) {
+    //    cityList.innerHTML = "";
+    // }
+
+    var cityList = document.createElement("ul");
+    cityList.id = "city-list";
     for( var i=0; i < result.features.length; i++){
-        console.log(result.features[i].properties.address_line1)
+        // console.log(result.features[i].properties.address_line1)
+        if (result.features[i].properties.city != undefined) {
+            
+            var city = result.features[i].properties.city;
+            var state = result.features[i].properties.state;
+            var listUl = document.createElement("li");
+            listUl.classList.add("text-primary-content");
+            listUl.innerText = `${city}, ${state}`; 
+            cityList.appendChild(listUl);
+        }
+        // locationList.appendChild(cityList);
     }
+    var existingCityList = document.getElementById("city-list");
+    if (existingCityList) {
+        existingCityList.remove();
+    }
+
+    locationList.appendChild(cityList);
 }
 
 
@@ -185,7 +253,9 @@ function getCity(){
 //   const geocCity = 'raleigh'
   fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${cur}&apiKey=dfc930689ca5445997b6dff21a5ff71b`, requestOptions)
     .then(response => response.json())
-    .then(result => loop(result))
+.then(result => {
+    console.log(result)
+    loop(result)})
     // for( var i=0; i < result.features.length; i++){
     //     console.log(result.features[i].properties.address_line1)
     // }
@@ -199,4 +269,5 @@ function getCity(){
 }
 
   searchForm.addEventListener("submit", searchHandler);
+  
 
