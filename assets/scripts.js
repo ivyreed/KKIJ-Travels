@@ -5,6 +5,7 @@ var displayVenues = document.querySelector("#venues");
 var venueLocation = document.querySelector("#location-list");
 var searchForm = document.querySelector("#searchEntry");
 var searchInput = document.querySelector("#search");
+var locationList = document.querySelector("#location-list");
 /*
 event.name
 event.url
@@ -217,9 +218,6 @@ function onInputChange(){
 
 // This loops through an obtains each city with the same name and appends it as text to the HTML document. 
 function loop(result) {
-    // if (locationList) {
-    //    cityList.innerHTML = "";
-    // }
 
     var cityList = document.createElement("ul");
     cityList.id = "city-list";
