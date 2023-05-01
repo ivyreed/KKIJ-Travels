@@ -110,6 +110,57 @@ function placesTravel(city){
   var miami = document.querySelector('#miami')
   var losAngeles = document.querySelector('#los-angeles')
 
+
+
+  // add event listeners for city buttons
+  function lasVegasEvents(event) {
+    event.preventDefault();
+    var city = "las vegas"
+    console.log(city)
+    placesTravel(city);
+}
+  lasVegas.addEventListener('click', lasVegasEvents)
+
+  function newYorkEvents(event) {
+    event.preventDefault();
+    var city = "new york"
+    console.log(city)
+    placesTravel(city);
+}
+  newYork.addEventListener('click', newYorkEvents)
+
+  function miamiEvents(event) {
+    event.preventDefault();
+    var city = "miami"
+    console.log(city)
+    placesTravel(city);
+}
+  miami.addEventListener('click', miamiEvents)
+
+  function losAngelesEvents(event) {
+    event.preventDefault();
+    var city = "los angeles"
+    console.log(city)
+    placesTravel(city);
+}
+  losAngeles.addEventListener('click', losAngelesEvents)
+
+
+
+
+   
+    // .then(function(resp) { return resp.json() }) // Convert data to json
+    // .then(function(data) {
+    //   console.log(data);
+    // })
+    // .catch(function() {
+    //   // catch any errors
+    // });
+  
+
+  // loadMaps ();
+
+
   // add event listeners for city buttons
   function lasVegasEvents(event) {
     event.preventDefault();
@@ -216,5 +267,7 @@ function getCity(){
     
 //     // .catch(error => console.log('error', error));
 }
+
   searchForm.addEventListener("submit", searchHandler);
   
+
