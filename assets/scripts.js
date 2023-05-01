@@ -147,17 +147,16 @@ function placesTravel(city){
 
 
    
-=======
-    .then(function(resp) { return resp.json() }) // Convert data to json
-    .then(function(data) {
-      console.log(data);
-    })
-    .catch(function() {
-      // catch any errors
-    });
-  }
+    // .then(function(resp) { return resp.json() }) // Convert data to json
+    // .then(function(data) {
+    //   console.log(data);
+    // })
+    // .catch(function() {
+    //   // catch any errors
+    // });
+  
 
-  loadMaps ();
+  // loadMaps ();
 
 
 
@@ -198,6 +197,6 @@ function getCity(){
     
 //     // .catch(error => console.log('error', error));
 }
-s
+
   searchForm.addEventListener("submit", searchHandler);
 
