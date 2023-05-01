@@ -102,6 +102,7 @@ function placesTravel(city){
 }
 
 
+
   // kat
   // connect button id to separate variables
   var lasVegas = document.querySelector('#las-vegas')
@@ -146,3 +147,57 @@ function placesTravel(city){
 
 
    
+=======
+    .then(function(resp) { return resp.json() }) // Convert data to json
+    .then(function(data) {
+      console.log(data);
+    })
+    .catch(function() {
+      // catch any errors
+    });
+  }
+
+  loadMaps ();
+
+
+
+
+  
+searchInput.addEventListener("input", getCity);
+
+function onInputChange(){
+    let cur = searchInput.value
+    console.log(cur)
+}
+
+
+function loop(result) {
+    for( var i=0; i < result.features.length; i++){
+        console.log(result.features[i].properties.address_line1)
+    }
+}
+
+
+function getCity(){
+  var requestOptions = {
+    method: 'GET',
+  };
+  let cur = searchInput.value
+//   const geocCity = 'raleigh'
+  fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${cur}&apiKey=dfc930689ca5445997b6dff21a5ff71b`, requestOptions)
+    .then(response => response.json())
+    .then(result => loop(result))
+    // for( var i=0; i < result.features.length; i++){
+    //     console.log(result.features[i].properties.address_line1)
+    // }
+    
+    
+    
+    
+    
+    
+//     // .catch(error => console.log('error', error));
+}
+s
+  searchForm.addEventListener("submit", searchHandler);
+
