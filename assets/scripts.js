@@ -101,11 +101,53 @@ function placesTravel(city){
         console.log(events)})
 }
 
-function loadMaps() {
-    var apiKey = 'AljsI1cce55ZdqJLOmRmaNeZTfNQdL6DbjCMScetIUaHu4ydHWKlyRvGF0PmqAq4';
-    fetch('https://dev.virtualearth.net/REST/v1/Routes?wayPoint.1=47.610,-122.107&wayPoint.2=45.610,-122.107&key=' + apiKey)
-    
 
+
+  // kat
+  // connect button id to separate variables
+  var lasVegas = document.querySelector('#las-vegas')
+  var newYork = document.querySelector('#new-york')
+  var miami = document.querySelector('#miami')
+  var losAngeles = document.querySelector('#los-angeles')
+
+  // add event listeners for city buttons
+  function lasVegasEvents(event) {
+    event.preventDefault();
+    var city = "las vegas"
+    console.log(city)
+    placesTravel(city);
+}
+  lasVegas.addEventListener('click', lasVegasEvents)
+
+  function newYorkEvents(event) {
+    event.preventDefault();
+    var city = "new york"
+    console.log(city)
+    placesTravel(city);
+}
+  newYork.addEventListener('click', newYorkEvents)
+
+  function miamiEvents(event) {
+    event.preventDefault();
+    var city = "miami"
+    console.log(city)
+    placesTravel(city);
+}
+  miami.addEventListener('click', miamiEvents)
+
+  function losAngelesEvents(event) {
+    event.preventDefault();
+    var city = "los angeles"
+    console.log(city)
+    placesTravel(city);
+}
+  losAngeles.addEventListener('click', losAngelesEvents)
+
+
+
+
+   
+=======
     .then(function(resp) { return resp.json() }) // Convert data to json
     .then(function(data) {
       console.log(data);
@@ -158,3 +200,4 @@ function getCity(){
 }
 s
   searchForm.addEventListener("submit", searchHandler);
+
