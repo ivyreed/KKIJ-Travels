@@ -194,6 +194,16 @@ function placesTravel(city){
     placesTravel(city);
 }
   losAngeles.addEventListener('click', losAngelesEvents)
+  
+
+  lasVegas.addEventListener('click', lasVegasEvents)
+
+  function newYorkEvents(event) {
+    event.preventDefault();
+    var city = listen
+    console.log(city)
+    placesTravel(city);
+}
 
 
 
@@ -215,31 +225,43 @@ function onInputChange(){
     let cur = searchInput.value
     console.log(cur)
 }
+// var auto = document.querySelector('#autocomplete')
 
 // This loops through an obtains each city with the same name and appends it as text to the HTML document. 
 function loop(result) {
-
+    var results = document.querySelector('#autocomplete')
+    results.innerHTML = '';
     var cityList = document.createElement("ul");
-    cityList.id = "city-list";
+    cityList.setAttribute('id', 'city-name');
     for( var i=0; i < result.features.length; i++){
         // console.log(result.features[i].properties.address_line1)
         if (result.features[i].properties.city != undefined) {
-            
+            var li = document.createElement('li')
+            li.classList.add('my-1')
             var city = result.features[i].properties.city;
             var state = result.features[i].properties.state;
-            var listUl = document.createElement("li");
-            listUl.classList.add("text-primary-content");
-            listUl.innerText = `${city}, ${state}`; 
-            cityList.appendChild(listUl);
+            var liBtn = document.createElement("button");
+            liBtn.setAttribute('id', i)
+            // listenTag = document.querySelector('#' + [i])
+            liBtn.addEventListener('click', function(){
+              searchInput.value = '';
+              results.innerHTML = '';
+              placesTravel(city);
+
+            } )
+            liBtn.classList.add("text-primary-content");
+            liBtn.innerText = `${city}, ${state}`; 
+            li.appendChild(liBtn)
+            results.appendChild(li);
         }
         // locationList.appendChild(cityList);
     }
-    var existingCityList = document.getElementById("city-list");
-    if (existingCityList) {
-        existingCityList.remove();
-    }
+    // var existingCityList = document.getElementById("city-list");
+    // if (existingCityList) {
+    //     existingCityList.remove();
+    // }
 
-    locationList.appendChild(cityList);
+    // auto.appendChild(results);
 }
 
 
@@ -268,4 +290,3 @@ function getCity(){
 
   searchForm.addEventListener("submit", searchHandler);
   
-
