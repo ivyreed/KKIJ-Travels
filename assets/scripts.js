@@ -1,13 +1,17 @@
+// main variables
 var textArea = document.querySelector("#aside-text-area");
 var searchBtn = document.querySelector("#search-button");
-var popularCity = document.querySelectorAll("#la-events, #ny-events, #miami-events");
 var displayVenues = document.querySelector("#venues");
 var venueLocation = document.querySelector("#location-list");
 var searchForm = document.querySelector("#searchEntry");
 var searchInput = document.querySelector("#search");
 var locationList = document.querySelector("#location-list");
+
+// variables to display events from the Ticketmaster API
 var displayEvents = [];
 var allEvents = [];
+
+// function to display event information from the Ticketmaster API
 var cityEvents = function (events) {
     var city = localStorage.getItem("city");
     if (city) {
@@ -48,22 +52,23 @@ var cityEvents = function (events) {
     }
     localStorage.setItem("city", JSON.stringify(allEvents));
 }
-
 var displayStoredEvents = function() {
     var storedEvents = localStorage.getItem("city");
     if (storedEvents) {
         displayEvents = JSON.parse(storedEvents);
         cityEvents(displayEvents);
         venueLocation.innerHTML = "";
-}
-}
+}}
 displayStoredEvents();
 
+// function that shows events based on the city typed in the search bar 
 function searchHandler(event) {
     event.preventDefault();
     var city = searchInput.value;
     placesTravel(city);
 }
+
+// function that pulls information from the Ticketmaster API
 function placesTravel(city){
     var apiKey = "Efd8lGNsvYBNxWvkrSLfqqavEwDHSeey"
     var queryURL = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&apikey=${apiKey}`
@@ -76,8 +81,8 @@ function placesTravel(city){
         cityEvents(events);
     })
 }
-  // kat
-  // connect button id to separate variables
+
+// variables to add functionality to main city buttons 
   var lasVegas = document.querySelector('#las-vegas')
   var newYork = document.querySelector('#new-york')
   var miami = document.querySelector('#miami')
@@ -87,7 +92,7 @@ function placesTravel(city){
   var miami2 = document.querySelector('#miami-2')
   var losAngeles2 = document.querySelector('#los-angeles-2')
 
-  // add event listeners for city buttons
+// functions and event listeners that allow that city to be ran once clicked
   function lasVegasEvents(event) {
     event.preventDefault();
     var city = "las vegas"
@@ -95,6 +100,7 @@ function placesTravel(city){
 }
   lasVegas.addEventListener('click', lasVegasEvents)
   lasVegas2.addEventListener('click', lasVegasEvents)
+  
   function newYorkEvents(event) {
     event.preventDefault();
     var city = "new york"
@@ -102,6 +108,7 @@ function placesTravel(city){
 }
   newYork.addEventListener('click', newYorkEvents)
   newYork2.addEventListener('click', newYorkEvents)
+  
   function miamiEvents(event) {
     event.preventDefault();
     var city = "miami"
@@ -109,6 +116,7 @@ function placesTravel(city){
 }
   miami.addEventListener('click', miamiEvents)
   miami2.addEventListener('click', miamiEvents)
+  
   function losAngelesEvents(event) {
     event.preventDefault();
     var city = "los angeles"
@@ -116,10 +124,8 @@ function placesTravel(city){
 }
   losAngeles.addEventListener('click', losAngelesEvents)
   losAngeles2.addEventListener('click', losAngelesEvents)
+  
   searchInput.addEventListener("input", getCity);
-function onInputChange(){
-    let cur = searchInput.value
-}
 
 // This loops through an obtains each city with the same name and appends it as text to the HTML document. 
 function loop(result) {
@@ -147,6 +153,8 @@ function loop(result) {
         }
     }
 }
+
+// function to get information from GeoApify API
 function getCity(){
   var requestOptions = {
     method: 'GET',
@@ -157,4 +165,5 @@ function getCity(){
 .then(result => {
     loop(result)})
 }
-  searchForm.addEventListener("submit", searchHandler);
+searchForm.addEventListener("submit", searchHandler);
+
