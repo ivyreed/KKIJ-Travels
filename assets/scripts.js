@@ -289,4 +289,3 @@ function getCity(){
 }
 
   searchForm.addEventListener("submit", searchHandler);
-  
