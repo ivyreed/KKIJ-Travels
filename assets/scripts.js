@@ -1,24 +1,17 @@
+// main variables
 var textArea = document.querySelector("#aside-text-area");
 var searchBtn = document.querySelector("#search-button");
-var popularCity = document.querySelectorAll("#la-events, #ny-events, #miami-events");
 var displayVenues = document.querySelector("#venues");
 var venueLocation = document.querySelector("#location-list");
 var searchForm = document.querySelector("#searchEntry");
 var searchInput = document.querySelector("#search");
 var locationList = document.querySelector("#location-list");
-/*
-event.name
-event.url
-event.images[0] --do we want to render all the pics?
-dates.start.localTime
-dates.start.localDate
-event.info
-event.pleaseNote
-event.priceRanges --It's an array 
-*/
+
+// variables to display events from the Ticketmaster API
 var displayEvents = [];
 var allEvents = [];
 
+// function to display event information from the Ticketmaster API
 var cityEvents = function (events) {
     var city = localStorage.getItem("city");
     if (city) {
@@ -55,19 +48,8 @@ var cityEvents = function (events) {
             )
             card.append(figure, cardBody);
             venueLocation.append(card);
-            // searchBtn.textContent = cityName;
-            // searchBtn.dataset.city = cityName;
-
-            // // searchBtn.addEventListener("click", function(event){
-            //     console.log(event)
-            //     var cityNamePull = event.target.dataset.city;
-            //     console.log(cityName);
-            //     placesTravel(cityNamePull);
-
-            // // })
         }
         searchForm.addEventListener("submit", searchHandler);
-        
     }
     localStorage.setItem("city", JSON.stringify(allEvents));
 }
@@ -78,10 +60,10 @@ var displayStoredEvents = function() {
         displayEvents = JSON.parse(storedEvents);
         cityEvents(displayEvents);
         venueLocation.innerHTML = "";
-}
-}
+}}
 displayStoredEvents();
 
+// function that shows events based on the city typed in the search bar 
 function searchHandler(event) {
     event.preventDefault();
     var city = searchInput.value;
@@ -89,6 +71,7 @@ function searchHandler(event) {
     placesTravel(city);
 }
 
+// function that pulls information from the Ticketmaster API
 function placesTravel(city){
     var apiKey = "Efd8lGNsvYBNxWvkrSLfqqavEwDHSeey"
     var queryURL = `https://app.ticketmaster.com/discovery/v2/events.json?city=${city}&apikey=${apiKey}`
@@ -102,18 +85,13 @@ function placesTravel(city){
         console.log(events)})
 }
 
-
-
-  // kat
-  // connect button id to separate variables
+// variables to add functionality to main city buttons 
   var lasVegas = document.querySelector('#las-vegas')
   var newYork = document.querySelector('#new-york')
   var miami = document.querySelector('#miami')
   var losAngeles = document.querySelector('#los-angeles')
 
-
-
-  // add event listeners for city buttons
+  // functions and event listeners that allow that city to be ran once clicked
   function lasVegasEvents(event) {
     event.preventDefault();
     var city = "las vegas"
@@ -147,94 +125,19 @@ function placesTravel(city){
   losAngeles.addEventListener('click', losAngelesEvents)
 
 
-
-
-   
-    // .then(function(resp) { return resp.json() }) // Convert data to json
-    // .then(function(data) {
-    //   console.log(data);
-    // })
-    // .catch(function() {
-    //   // catch any errors
-    // });
-  
-
-  // loadMaps ();
-
-
-  // add event listeners for city buttons
-  function lasVegasEvents(event) {
-    event.preventDefault();
-    var city = "las vegas"
-    console.log(city)
-    placesTravel(city);
-}
-  lasVegas.addEventListener('click', lasVegasEvents)
-
-  function newYorkEvents(event) {
-    event.preventDefault();
-    var city = "new york"
-    console.log(city)
-    placesTravel(city);
-}
-  newYork.addEventListener('click', newYorkEvents)
-
-  function miamiEvents(event) {
-    event.preventDefault();
-    var city = "miami"
-    console.log(city)
-    placesTravel(city);
-}
-  miami.addEventListener('click', miamiEvents)
-
-  function losAngelesEvents(event) {
-    event.preventDefault();
-    var city = "los angeles"
-    console.log(city)
-    placesTravel(city);
-}
-  losAngeles.addEventListener('click', losAngelesEvents)
-  
-
-  lasVegas.addEventListener('click', lasVegasEvents)
-
-  function newYorkEvents(event) {
-    event.preventDefault();
-    var city = listen
-    console.log(city)
-    placesTravel(city);
-}
-
-
-
-
-   
-    // .then(function(resp) { return resp.json() }) // Convert data to json
-    // .then(function(data) {
-    //   console.log(data);
-    // })
-    // .catch(function() {
-    //   // catch any errors
-    // });
-  
-
-  // loadMaps ();
   searchInput.addEventListener("input", getCity);
 
 function onInputChange(){
     let cur = searchInput.value
     console.log(cur)
 }
-// var auto = document.querySelector('#autocomplete')
-
-// This loops through an obtains each city with the same name and appends it as text to the HTML document. 
+// function that pulls event information based on the city clicked when the search bar autocompletes
 function loop(result) {
     var results = document.querySelector('#autocomplete')
     results.innerHTML = '';
     var cityList = document.createElement("ul");
     cityList.setAttribute('id', 'city-name');
     for( var i=0; i < result.features.length; i++){
-        // console.log(result.features[i].properties.address_line1)
         if (result.features[i].properties.city != undefined) {
             var li = document.createElement('li')
             li.classList.add('my-1')
@@ -242,50 +145,28 @@ function loop(result) {
             var state = result.features[i].properties.state;
             var liBtn = document.createElement("button");
             liBtn.setAttribute('id', i)
-            // listenTag = document.querySelector('#' + [i])
             liBtn.addEventListener('click', function(){
               searchInput.value = '';
               results.innerHTML = '';
               placesTravel(city);
-
             } )
             liBtn.classList.add("text-primary-content");
             liBtn.innerText = `${city}, ${state}`; 
             li.appendChild(liBtn)
             results.appendChild(li);
-        }
-        // locationList.appendChild(cityList);
-    }
-    // var existingCityList = document.getElementById("city-list");
-    // if (existingCityList) {
-    //     existingCityList.remove();
-    // }
+        }}}
 
-    // auto.appendChild(results);
-}
-
-
+// function to get information from GeoApify API
 function getCity(){
   var requestOptions = {
     method: 'GET',
   };
   let cur = searchInput.value
-//   const geocCity = 'raleigh'
   fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${cur}&apiKey=dfc930689ca5445997b6dff21a5ff71b`, requestOptions)
     .then(response => response.json())
 .then(result => {
     console.log(result)
     loop(result)})
-    // for( var i=0; i < result.features.length; i++){
-    //     console.log(result.features[i].properties.address_line1)
-    // }
-    
-    
-    
-    
-    
-    
-//     // .catch(error => console.log('error', error));
 }
 
-  searchForm.addEventListener("submit", searchHandler);
+searchForm.addEventListener("submit", searchHandler);
