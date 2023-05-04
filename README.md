@@ -53,4 +53,16 @@ John Sanders:
     *Sign in with google account and then you'll have access to the API. 
 
 
+3. pictures were gathered from these websites
+
+https://www.visitlasvegas.com/
+https://www.state.gov/states/new-york/
+https://en.wikipedia.org/wiki/Los_Angeles
+https://www.travelandleisure.com/travel-guide/miami
+https://www.frapan-invest.com/en/panama-global-city-of-the-future/
+
+4. favicon was gathered from this website
+https://formito.com/tools/favicon
+
+
 
