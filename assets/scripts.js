@@ -144,7 +144,7 @@ function loop(result) {
             liBtn.addEventListener('click', function(){
               searchInput.value = '';
               results.innerHTML = '';
-              placesTravel(city);
+               placesTravel(this.textContent);
             } )
             liBtn.classList.add("text-neutral-content", 'hover:text-warning-content');
             liBtn.innerText = `${city}, ${state}`; 
@@ -160,6 +160,9 @@ function getCity(){
     method: 'GET',
   };
   let cur = searchInput.value
+  if (!cur){
+    return;
+  }
   fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${cur}&apiKey=dfc930689ca5445997b6dff21a5ff71b`, requestOptions)
     .then(response => response.json())
 .then(result => {
