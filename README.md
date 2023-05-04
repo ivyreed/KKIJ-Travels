@@ -26,19 +26,19 @@ https://ivyreed.github.io/KKIJ-Travels/
 ## Contributors
 Ivy Reed: 
 
-    [Github](https://github.com/ivyreed)
+    https://github.com/ivyreed
 
 Kathyrn Young:
 
-    [Github](https://github.com/KathyrnY)
+    https://github.com/KathyrnY
 
 Katrina Gucilatar:
 
-    [Github](https://github.com/katgucilatar)
+    https://github.com/katgucilatar
 
 John Sanders:
 
-    [Github](https://github.com/js131993)
+    https://github.com/js131993
 
 ## Acknowledgements
 
@@ -48,7 +48,7 @@ John Sanders:
     *Make a profile
     *Detail what you're utilizing the API key for (state your intentions) 
 
-2. GEO Apilify
+2. GEO Apify
 
     *Sign in with google account and then you'll have access to the API. 
 
