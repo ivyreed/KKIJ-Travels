@@ -16,7 +16,10 @@ KKIJ Travels incorporates two apis from ticketmaster and GEO API to allow you to
 ## Link
 
 https://ivyreed.github.io/KKIJ-Travels/
+
 ## Visual
+
+https://user-images.githubusercontent.com/127566404/236096868-9ab69a2f-eabf-475f-abc1-52826cec7aed.mp4
 
 ## Installation
 
