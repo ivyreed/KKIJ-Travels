@@ -67,5 +67,10 @@ https://www.frapan-invest.com/en/panama-global-city-of-the-future/
 4. favicon was gathered from this website
 https://formito.com/tools/favicon
 
+## Note
+
+Received assistance from TA Sean, Santiago, Instructor Josh and Sub Philip.
+
+Please note that you may incur an error in the console for quota met. 
 
 
