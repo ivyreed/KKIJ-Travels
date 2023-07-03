@@ -133,7 +133,7 @@ function loop(result) {
     results.innerHTML = '';
     var cityList = document.createElement("ul");
     cityList.setAttribute('id', 'city-name');
-    for( var i=0; i < result.features.length; i++){
+    for(var i=0; i < result.features.length; i++){
         if (result.features[i].properties.city != undefined) {
             var li = document.createElement('li')
             li.classList.add('pb-2', 'px-2')
